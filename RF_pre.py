@@ -12,7 +12,7 @@ model = joblib.load('RF_pre.pkl')
 scaler = joblib.load('scaler.pkl') 
 
 # Define feature names
-feature_names = [ "age", " preop_ucg_EF ", "NT-proBNP ", " DBIL ", "T3", "UREA"]
+feature_names = [ "age", " preop_ucg_EF ", "BNP ", " DBIL ", "T3", "UREA"]
 
 ## Streamlit user interface
 st.title("LCOS preoperative model")
@@ -21,8 +21,8 @@ st.title("LCOS preoperative model")
 age = st.number_input("Age:", min_value=18, max_value=100, value=60)
 # preop_ucg_EF: numerical input
 preop_ucg_EF = st.number_input("preop_ucg_EF:", min_value=10, max_value=100, value=60)
-# NT-proBNP: numerical input
-NT-proBNP = st.number_input("NT-proBNP（ng/L）:", min_value=100.00, max_value=50000.00, value=125.00)
+# BNP: numerical input
+BNP = st.number_input("NT-proBNP（ng/L）:", min_value=100.00, max_value=50000.00, value=125.00)
 # DBIL：numerical input
 DBIL = st.number_input("DBIL（μmol/L) :", min_value=0.00, max_value=100.00, value=5.00)
 # T3：numerical input
@@ -32,7 +32,7 @@ UREA = st.number_input("UREA（mmol/L）:", min_value=0.00, max_value=50.00, val
 
 
 # Process inputs and make predictions
-feature_values = [ age, preop_ucg_EF, NT-proBNP, DBIL ,T3, UREA]
+feature_values = [ age, preop_ucg_EF, BNP, DBIL ,T3, UREA]
 features = np.array([feature_values])
 
 if st.button("Predict"):    
